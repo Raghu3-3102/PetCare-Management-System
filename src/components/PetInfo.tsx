@@ -90,7 +90,7 @@ const PetInfo: React.FC<PetInfoProps> = ({ id, pet, editPet, editClient, refetch
                   value={opt}
                   checked={formData[key] === opt}
                   onChange={() => handleChange(key, opt)}
-                  className="mr-1"
+                    className="focus:ring-2 focus:ring-blue-400 focus:outline-none"
                 />
                 {opt}
               </label>
@@ -108,7 +108,8 @@ const PetInfo: React.FC<PetInfoProps> = ({ id, pet, editPet, editClient, refetch
             type={type}
             value={formData?.[key] ?? ""}
             onChange={(e) => handleChange(key, e.target.value)}
-            className="border rounded px-2 py-1 text-sm w-full"
+            className="border rounded px-2 py-1 text-sm w-full
+            focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         ) : (
           <div className="text-gray-900 font-medium text-sm">{formData?.[key]}</div>
