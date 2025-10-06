@@ -1,7 +1,6 @@
 // __tests__/Bookings.test.tsx
 import { render, screen } from "@testing-library/react";
 import Bookings from "../components/Booking";
-import toast from "react-hot-toast";
 
 // Mock toast to prevent actual popups
 jest.mock("react-hot-toast", () => ({

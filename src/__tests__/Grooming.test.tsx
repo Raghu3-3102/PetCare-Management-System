@@ -1,7 +1,6 @@
 // __tests__/Grooming.test.tsx
 import { render, screen } from "@testing-library/react";
 import Grooming from "../components/Grooming";
-import toast from "react-hot-toast";
 
 // Mock toast
 jest.mock("react-hot-toast", () => ({

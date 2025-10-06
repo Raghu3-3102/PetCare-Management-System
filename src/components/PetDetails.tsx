@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, ChangeEvent, useRef } from 'react'
+import  { FC, useState, useEffect, ChangeEvent, useRef } from 'react'
 import { Camera } from 'lucide-react' // icon (from lucide-react)
 import { usePet, useAvatar, useEditImage } from '../hooks/usePets'
 

@@ -1,7 +1,6 @@
 // __tests__/Vaccinations.test.tsx
 import { render, screen } from "@testing-library/react";
 import Vaccinations from "../components/Vaccinations";
-import toast from "react-hot-toast";
 
 // Mock toast
 jest.mock("react-hot-toast", () => ({

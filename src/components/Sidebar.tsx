@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react'
+import  { FC, useState, useEffect } from 'react'
 import { useCustomers } from '../hooks/usePets'
 import Logo from '/src/assets/logo.jpg'
 

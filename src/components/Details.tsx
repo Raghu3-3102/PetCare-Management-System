@@ -8,7 +8,6 @@ import {
   useEditClient,
   useEditVactinatio,
   useEditGrooming,
-  useEditBooking,
   useAddVaccination,
   useAddGrooming,
   useAddBooking
@@ -37,84 +36,20 @@ const Details: FC<PetDetailsProps> = ({ activeTab, petId, OnLode }) => {
   const { editClient } = useEditClient();
   const { editVactinationfunc } = useEditVactinatio();
   const { EditGroomingfunc } = useEditGrooming();
-  const { EditGBookingfunc } = useEditBooking();
   const { addVaccination } = useAddVaccination();
   const { addGrooming } = useAddGrooming();
   const { addBooking } = useAddBooking();
 
   const [formData, setFormData] = useState<any>(null);
-  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     if (pet) setFormData(pet);
   }, [pet]);
 
-  const [vaccinationForm, setVaccinationForm] = useState<any>(null);
-  const [isEditingVaccination, setIsEditingVaccination] = useState(false);
-  useEffect(() => {
-    if (petVaccinations) setVaccinationForm(petVaccinations);
-  }, [petVaccinations]);
+  if (!formData)
+    return <div className="p-6 text-center text-gray-500">⏳ Loading pet data...</div>;
 
-  const [groomingForm, setGroomingForm] = useState<any>(null);
-  const [isEditingGrooming, setIsEditingGrooming] = useState(false);
-  useEffect(() => {
-    if (petGroomings) setGroomingForm(petGroomings);
-  }, [petGroomings]);
-
-  const [bookingForm, setBookingForm] = useState<any>(null);
-  const [isEditingBooking, setIsEditingBooking] = useState(false);
-  useEffect(() => {
-    if (PetBooking) setBookingForm(PetBooking);
-  }, [PetBooking]);
-
-  const handleChange = (key: string, value: string) => {
-    setFormData((prev: any) => ({ ...prev, [key]: value }));
-  };
-
-  const handleVaccinationChange = (key: string, value: string) => {
-    setVaccinationForm((prev: any) => ({ ...prev, [key]: value }));
-  };
-
-  const handleGroomingChange = (key: string, value: string) => {
-    setGroomingForm((prev: any) => ({ ...prev, [key]: value }));
-  };
-
-  const handleSave = async () => {
-    if (!formData) return;
-    const updated = await editPet(id, formData);
-    await editClient(id, {
-      status: formData.status,
-      clientEmail: formData.clientEmail,
-      petsname: formData.name,
-      petstype: formData.type,
-      petsbreed: formData.breed,
-      petImage: formData.photos?.[0] || "",
-    });
-    if (updated) {
-      setFormData(updated);
-      await refetchPet();
-    }
-    setIsEditing(false);
-    OnLode?.(formData.name);
-  };
-
-  const handleSaveVaccination = async () => {
-    if (!vaccinationForm) return;
-    const updated = await editVactinationfunc(id, vaccinationForm);
-    if (updated) setVaccinationForm(updated);
-    setIsEditingVaccination(false);
-  };
-
-  const handleSaveGrooming = async () => {
-    if (!groomingForm) return;
-    const updated = await EditGroomingfunc(id, groomingForm);
-    if (updated) setGroomingForm(updated);
-    setIsEditingGrooming(false);
-  };
-
-  if (!formData) return <div className="p-6 text-center text-gray-500">⏳ Loading pet data...</div>;
-
-  return (
+    return (
     <div>
       {activeTab === "Pet Details" && (
         <PetInfo
@@ -157,6 +92,7 @@ const Details: FC<PetDetailsProps> = ({ activeTab, petId, OnLode }) => {
       )}
     </div>
   );
+  
 };
 
 export default Details;
