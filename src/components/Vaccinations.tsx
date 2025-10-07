@@ -38,7 +38,7 @@ const Vaccinations: FC<VaccinationDetailsProps> = ({
   // inside handleAdd
 const handleAdd = async () => {
   // filter vaccinations for this pet only
-  const petVaccines = list.filter(v => v.id === petId);
+  // const petVaccines = list.filter(v => v.id === petId);
 
   // assign vacId starting from 1 for each pet
   let newVacId = list.length + 1;
@@ -66,7 +66,7 @@ const handleAdd = async () => {
   // save changes
   const handleSave = async () => {
 
-    const savedVac = await addVaccination(list[list.length - 1]);
+     await addVaccination(list[list.length - 1]);
       toast.success("Vaccination added successfully");
     setIsEditing(false);
   };

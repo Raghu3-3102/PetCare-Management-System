@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   usePet,
   usePetvaccinations,
@@ -6,8 +6,6 @@ import {
   usePetbookings,
   useEditPet,
   useEditClient,
-  useEditVactinatio,
-  useEditGrooming,
   useAddVaccination,
   useAddGrooming,
   useAddBooking
@@ -34,8 +32,6 @@ const Details: FC<PetDetailsProps> = ({ activeTab, petId, OnLode }) => {
   const { PetBooking } = usePetbookings(id);
   const { editPet } = useEditPet();
   const { editClient } = useEditClient();
-  const { editVactinationfunc } = useEditVactinatio();
-  const { EditGroomingfunc } = useEditGrooming();
   const { addVaccination } = useAddVaccination();
   const { addGrooming } = useAddGrooming();
   const { addBooking } = useAddBooking();
